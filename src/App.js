@@ -5,27 +5,28 @@ export default function App() {
 	const [checked, setChecked] = useState([]);
 	const [pref, setPref] = useState([]);
 
+	// get all cities name on component mount
 	useEffect(() => {
 		const fetchData = async () => {
 			// get the data from the api
 			const data = await fetch(
 				"https://opendata.resas-portal.go.jp/api/v1/prefectures",
 				{
-					method: "POST",
 					headers: {
-						"X-API-KEY": "apikey",
-						Accept: "application/json",
-						"Content-Type": "application/json",
+						"Content-Type": "application/json;charset=UTF-8",
+						"X-API-KEY": `${process.env.REACT_APP_API_KEY}`,
 					},
 				}
 			);
-			// convert the data to json
-			const json = await data.json();
+			const citiesName = await data.json();
 			// set state with the result
-			setPref(json.result);
+			setPref(citiesName.result);
 		};
-
-		fetchData().catch(console.error);
+		try {
+			fetchData();
+		} catch (error) {
+			console.log(error);
+		}
 	}, []);
 
 	// Add/Remove checked item from list
