@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CheckList from "./component/CheckList";
+import { addData } from "./utils/addData";
 
 export default function App() {
-	const [checked, setChecked] = useState([]);
 	const [pref, setPref] = useState([]);
-
+	const [selected, setSelected] = useState([]);
 	// get all cities name on component mount
 	useEffect(() => {
 		const fetchData = async () => {
@@ -33,26 +33,37 @@ export default function App() {
 		}
 	}, []);
 
-	// Add/Remove checked item from list
-	const handleCheck = (event) => {
-		var updatedList = [...checked];
-		if (event.target.checked) {
-			updatedList = [...checked, event.target.value];
-		} else {
-			updatedList.splice(checked.indexOf(event.target.value), 1);
-		}
-		setChecked(updatedList);
+	// useEffect(() => {
+	//   let selected = pref.filter((city)=>city.checked === true);
 
-		// checked on pref state
+	// }, [pref])
+
+	// Add/Remove checked item from list
+	const handleCheck = async (event) => {
+		let code = +event.target.id;
+
+		// update pref state for checked
 		setPref((prevPref) => {
 			return prevPref.map((city) => {
-				if (+city.prefCode === +event.target.id) {
-					console.log(event.target.id);
+				if (city.prefCode === code) {
 					return { ...city, checked: !city.checked };
 				}
 				return city;
 			});
 		});
+
+		// update selected state
+		if (event.target.checked) {
+			const data = await addData(code);
+			data.prefCode = code;
+			data.prefName = event.target.value;
+			setSelected((prevPref) => [...prevPref, data]);
+		} else {
+			const updateSelected = selected.filter(
+				(city) => city.prefCode !== code
+			);
+			setSelected([...updateSelected]);
+		}
 	};
 
 	return (
