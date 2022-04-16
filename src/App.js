@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import Chart from "./component/Chart";
 import CheckList from "./component/CheckList";
 import { addData } from "./utils/addData";
+import { convertData } from "./utils/convertData";
 
 export default function App() {
 	const [pref, setPref] = useState([]);
 	const [selected, setSelected] = useState([]);
+	const [chartData, setChartData] = useState([]);
+
 	// get all cities name on component mount
 	useEffect(() => {
 		const fetchData = async () => {
@@ -33,10 +37,10 @@ export default function App() {
 		}
 	}, []);
 
-	// useEffect(() => {
-	//   let selected = pref.filter((city)=>city.checked === true);
-
-	// }, [pref])
+	useEffect(() => {
+		const data = convertData(selected);
+		setChartData(data);
+	}, [selected]);
 
 	// Add/Remove checked item from list
 	const handleCheck = async (event) => {
@@ -69,6 +73,7 @@ export default function App() {
 	return (
 		<>
 			<CheckList pref={pref} handleCheck={handleCheck} />
+			<Chart data={chartData} />
 		</>
 	);
 }
