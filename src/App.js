@@ -18,9 +18,13 @@ export default function App() {
 					},
 				}
 			);
-			const citiesName = await data.json();
+			const jsonData = await data.json();
 			// set state with the result
-			setPref(citiesName.result);
+			let citiesName = [...jsonData.result];
+			citiesName.forEach((obj) => {
+				obj.checked = false;
+			});
+			setPref(citiesName);
 		};
 		try {
 			fetchData();
@@ -38,11 +42,22 @@ export default function App() {
 			updatedList.splice(checked.indexOf(event.target.value), 1);
 		}
 		setChecked(updatedList);
+
+		// checked on pref state
+		setPref((prevPref) => {
+			return prevPref.map((city) => {
+				if (+city.prefCode === +event.target.id) {
+					console.log(event.target.id);
+					return { ...city, checked: !city.checked };
+				}
+				return city;
+			});
+		});
 	};
 
 	return (
 		<>
-			<CheckList handleCheck={handleCheck} />
+			<CheckList pref={pref} handleCheck={handleCheck} />
 		</>
 	);
 }
