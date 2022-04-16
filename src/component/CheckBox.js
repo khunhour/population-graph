@@ -1,12 +1,21 @@
 import React from "react";
 
-export default function CheckBox({ name, index, handleCheck }) {
-  return (
-    <>
-      <div key={index}>
-        <input value={name} type="checkbox" onChange={handleCheck} />
-        <span>{name}</span>
-      </div>
-    </>
-  );
+export default function CheckBox({ city, handleCheck }) {
+	return (
+		<>
+			<div>
+				<label>
+					<input
+						id={city.prefCode}
+						value={city.prefName}
+						name={city.prefName}
+						type="checkbox"
+						onChange={handleCheck}
+						checked={city.checked}
+					/>
+					{city.prefName}
+				</label>
+			</div>
+		</>
+	);
 }
