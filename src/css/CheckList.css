@@ -1,0 +1,10 @@
+.checkbox-background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.checkbox-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
