@@ -1,5 +1,6 @@
 import React from "react";
 import {
+	Label,
 	Legend,
 	Line,
 	LineChart,
@@ -18,7 +19,7 @@ function Chart({ data }) {
 	}
 
 	return (
-		<ResponsiveContainer width="99%" aspect={3}>
+		<ResponsiveContainer width="99%" height={500}>
 			<LineChart
 				width={600}
 				height={500}
@@ -27,13 +28,21 @@ function Chart({ data }) {
 					top: 10,
 					right: 30,
 					left: 50,
-					bottom: 10,
+					bottom: 40,
 				}}
 			>
-				<XAxis dataKey="year" />
-				<YAxis />
+				<XAxis dataKey="year">
+					<Label value="年度" position="bottom" />
+				</XAxis>
+				<YAxis angle={-55}>
+					<Label value="人口数" position="left" angle={-90} />
+				</YAxis>
 				<Tooltip />
-				<Legend />
+				<Legend
+					style={{ bottom: "20px" }}
+					layout="horizontal"
+					verticalAlign="top"
+				/>
 				{lines.map((city, index) => {
 					return (
 						<Line
