@@ -7,10 +7,13 @@ export const convertData = (selected) => {
 			let obj = {};
 			obj.year = data.year;
 			obj[name] = data.value;
-			let index = dataArray.findIndex((ele) => ele.year == data.year);
+			let index = dataArray.findIndex((ele) => ele.year === data.year);
+			// if there is no existing obj just add
 			if (index === -1) {
 				dataArray.push(obj);
-			} else {
+			}
+			// if there is existing obj merge it with the current obj
+			else {
 				dataArray[index] = { ...dataArray[index], ...obj };
 			}
 		});
