@@ -73,8 +73,10 @@ export default function App() {
 
 	return (
 		<main>
-			<header>Japanese Population</header>
+			<header>日本の人口</header>
+			<h3 className="title">都道府県</h3>
 			<CheckList pref={pref} handleCheck={handleCheck} />
+			<h3 className="title">人口グラフ</h3>
 			<Chart data={chartData} />
 		</main>
 	);

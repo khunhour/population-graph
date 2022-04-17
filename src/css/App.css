@@ -11,9 +11,13 @@ main {
 }
 
 main header {
+	font-weight: 700;
 	background-color: rgb(11, 119, 161);
 	padding: 10px;
 	color: white;
 	text-align: center;
-	margin-bottom: 20px;
+}
+
+main .title {
+	text-align: center;
 }
