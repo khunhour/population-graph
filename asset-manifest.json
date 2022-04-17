@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/population-graph/static/css/main.2b6b3979.css",
+    "main.js": "/population-graph/static/js/main.1bd8f432.js",
+    "index.html": "/population-graph/index.html",
+    "main.2b6b3979.css.map": "/population-graph/static/css/main.2b6b3979.css.map",
+    "main.1bd8f432.js.map": "/population-graph/static/js/main.1bd8f432.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b6b3979.css",
+    "static/js/main.1bd8f432.js"
+  ]
+}

@@ -1,0 +1,2 @@
+.checkbox{width:100px}.checkbox-background{align-items:center;display:flex;justify-content:center;margin-bottom:30px}.checkbox-container{display:grid;grid-template-columns:repeat(5,1fr)}@media (max-width:540px){.checkbox-container{grid-template-columns:repeat(3,1fr)}}body,html{height:100%;margin:0;padding:0}main{height:100%;width:100%}main header{background-color:#0b77a1;color:#fff;font-weight:700;padding:10px}main .title,main header{text-align:center}
+/*# sourceMappingURL=main.2b6b3979.css.map*/
