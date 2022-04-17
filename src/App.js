@@ -38,6 +38,7 @@ export default function App() {
 		}
 	}, []);
 
+	// convert selected data every time it changes
 	useEffect(() => {
 		const data = convertData(selected);
 		setChartData(data);
