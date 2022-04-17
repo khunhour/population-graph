@@ -15,5 +15,8 @@ export const convertData = (selected) => {
 			}
 		});
 	});
-	return dataArray;
+	// only allow data that is under the current year
+	let today = new Date();
+	let oldData = dataArray.filter((ele) => ele.year <= today.getFullYear());
+	return oldData;
 };
