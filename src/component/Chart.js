@@ -46,7 +46,7 @@ function Chart({ data }) {
 				{lines.map((city, index) => {
 					return (
 						<Line
-							// type="monotone"
+							key={index}
 							dataKey={city}
 							stroke={colors[index]}
 						/>
