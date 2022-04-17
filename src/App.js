@@ -3,6 +3,7 @@ import Chart from "./component/Chart";
 import CheckList from "./component/CheckList";
 import { addData } from "./utils/addData";
 import { convertData } from "./utils/convertData";
+import "./css/App.css";
 
 export default function App() {
 	const [pref, setPref] = useState([]);
@@ -71,9 +72,9 @@ export default function App() {
 	};
 
 	return (
-		<>
+		<main>
 			<CheckList pref={pref} handleCheck={handleCheck} />
 			<Chart data={chartData} />
-		</>
+		</main>
 	);
 }
