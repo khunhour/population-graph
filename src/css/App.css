@@ -9,3 +9,11 @@ main {
 	height: 100%;
 	width: 100%;
 }
+
+main header {
+	background-color: rgb(11, 119, 161);
+	padding: 10px;
+	color: white;
+	text-align: center;
+	margin-bottom: 20px;
+}

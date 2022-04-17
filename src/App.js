@@ -73,6 +73,7 @@ export default function App() {
 
 	return (
 		<main>
+			<header>Japanese Population</header>
 			<CheckList pref={pref} handleCheck={handleCheck} />
 			<Chart data={chartData} />
 		</main>
