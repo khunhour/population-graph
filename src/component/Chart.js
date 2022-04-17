@@ -1,5 +1,13 @@
 import React from "react";
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {
+	Legend,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+	YAxis,
+} from "recharts";
 import { colors } from "../utils/colors";
 
 function Chart({ data }) {
@@ -24,10 +32,12 @@ function Chart({ data }) {
 			>
 				<XAxis dataKey="year" />
 				<YAxis />
+				<Tooltip />
+				<Legend />
 				{lines.map((city, index) => {
 					return (
 						<Line
-							type="monotone"
+							// type="monotone"
 							dataKey={city}
 							stroke={colors[index]}
 						/>
